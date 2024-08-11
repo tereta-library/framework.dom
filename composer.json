@@ -1,0 +1,15 @@
+{
+    "name": "tereta/framework.dom",
+    "autoload": {
+        "psr-4": {
+            "Framework\\Dom\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tereta Alexander",
+            "email": "tereta.alexander@gmail.com"
+        }
+    ],
+    "require": {}
+}
