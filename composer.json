@@ -1,5 +1,9 @@
 {
     "name": "tereta/framework.dom",
+    "description": "Part of framework to manage dom documents",
+    "license": "Apache-2.0",
+    "version": "0.0.19",
+    "type": "library",
     "autoload": {
         "psr-4": {
             "Framework\\Dom\\": "src/"
