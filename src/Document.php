@@ -218,12 +218,12 @@ class Document
         $tagType = NodeTag::TAG_NOTSET;
 
         $openTag = preg_match(
-            '/^\<\s*([\w_-]+)(\s|\>){1}/Usi',
+            '/^\<\s*([:\w_-]+)(\s|\>){1}/Usi',
             substr($this->document, $initialPosition),
             $matchesOpen
         );
         $closeTag = preg_match(
-            '/^\<\s*\/\s*([\w_-]+)(\s|\>){1}/Usi',
+            '/^\<\s*\/\s*([:\w_-]+)(\s|\>){1}/Usi',
             substr($this->document, $initialPosition),
             $matchesClose
         );
@@ -255,9 +255,10 @@ class Document
         $tagName = $matches[1];
         $offset = strlen($matches[0]) + $this->position - 1;
 
+        // Process attributes
         $attributes = [];
         while(preg_match(
-            '/^\s*([\w_-]+)\s*=\s*/Usi',
+            '/^\s*([:\w_-]+)\s*=\s*/Usi',
             substr($this->document, $offset),
             $matches
         )) {
