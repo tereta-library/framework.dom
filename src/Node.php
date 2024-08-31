@@ -72,6 +72,12 @@ class Node
     {
         $this->nodeIndex = static::$nodeStaticIndex;
         static::$nodeStaticIndex++;
+
+        $this->construct();
+    }
+
+    protected function construct(): void
+    {
     }
 
     /**
