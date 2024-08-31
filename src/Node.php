@@ -328,7 +328,7 @@ class Node
     public function render(): string
     {
         if ($this->tagOpen) {
-            $tag = $this->tagOpen->render() . "\n";
+            $tag = $this->tagOpen->render();
         }
 
         $children = '';

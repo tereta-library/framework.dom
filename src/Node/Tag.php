@@ -56,6 +56,14 @@ class Tag extends NodeAbstract implements NodeInterface
         return $this;
     }
 
+    private array $attributeScripts = [];
+
+    public function setAttributeScript(string $script): static
+    {
+        $this->attributeScripts[] = $script;
+        return $this;
+    }
+
     /**
      * @param array $attributes
      * @return $this
@@ -143,6 +151,10 @@ class Tag extends NodeAbstract implements NodeInterface
         foreach ($this->attributes as $key => $value) {
             $value = str_replace('"', '&quot;', $value);
             $tag .= " " . $key . "=\"" . $value . "\"";
+        }
+
+        if ($this->attributeScripts) {
+            $tag .= " " . implode(' ', $this->attributeScripts);
         }
 
         switch ($this->type) {
