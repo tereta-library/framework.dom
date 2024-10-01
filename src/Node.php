@@ -68,6 +68,9 @@ class Node
      */
     private static int $nodeStaticIndex = 0;
 
+    /**
+     * @param Document $document
+     */
     public function __construct(private Document &$document)
     {
         $this->nodeIndex = static::$nodeStaticIndex;
@@ -76,6 +79,9 @@ class Node
         $this->construct();
     }
 
+    /**
+     * @return void
+     */
     protected function construct(): void
     {
     }

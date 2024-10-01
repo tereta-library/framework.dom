@@ -47,6 +47,11 @@ class Tag extends NodeAbstract implements NodeInterface
     private array $attributes;
 
     /**
+     * @var array
+     */
+    private array $attributeScripts = [];
+
+    /**
      * @param string $name
      * @return $this
      */
@@ -56,8 +61,10 @@ class Tag extends NodeAbstract implements NodeInterface
         return $this;
     }
 
-    private array $attributeScripts = [];
-
+    /**
+     * @param string $script
+     * @return $this
+     */
     public function setAttributeScript(string $script): static
     {
         $this->attributeScripts[] = $script;
