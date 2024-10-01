@@ -102,8 +102,13 @@ class Document
      * @return string
      * @throws Exception
      */
-    public function render(): string
+    public function render($render = true): string
     {
+        if (!$render) {
+            $this->getNodeTree();
+            return '';
+        }
+
         $return = '';
         foreach ($this->getNodeTree() as $node) {
             $return .= $node->render();
@@ -352,5 +357,10 @@ class Document
     public function __toString(): string
     {
         return $this->render();
+    }
+
+    public function __sleep()
+    {
+        return ['document', 'fileDebug', 'position', 'tagList', 'tree'];
     }
 }

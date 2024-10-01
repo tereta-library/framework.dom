@@ -256,7 +256,7 @@ class Node
      */
     public function getAttribute(string $name): ?string
     {
-        if (!$this->tagOpen) return null;
+        if (!$this->tagOpen || !$this->tagOpen instanceof NodeTag) return null;
         return $this->tagOpen->getAttribute($name);
     }
 
@@ -333,6 +333,7 @@ class Node
      */
     public function render(): string
     {
+        $tag = '';
         if ($this->tagOpen) {
             $tag = $this->tagOpen->render();
         }
@@ -355,5 +356,9 @@ class Node
     public function __toString(): string
     {
         return $this->render();
+    }
+
+    public function __wakeup(): void
+    {
     }
 }
