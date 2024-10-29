@@ -339,15 +339,19 @@ class Node
         }
 
         $children = '';
+        $break = "\n";
         foreach ($this->getChildren() as $child) {
+            if ($child->getTag() instanceof NodeTag && $child->getTag()->getName() == 'backend-container') {
+                $break = '';
+            }
             $children .= $child->render();
         }
 
         if ($this->tagClose && $this->tagClose->getType() != $this->tagClose::TAG_SELF_CLOSE) {
-            return $tag . $children . $this->tagClose->render() . "\n";
+            return $break . $tag . $children . $this->tagClose->render();
         }
 
-        return $this->tag->render() . "\n";
+        return $break . $this->tag->render();
     }
 
     /**
